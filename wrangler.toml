@@ -1,0 +1,10 @@
+compatibility_date = "2024-07-29"
+main = "./build/worker.mjs"
+name = "mdl-wtf-go-pkg-domain"
+
+[build]
+command = "make build"
+
+[vars]
+BASE = "go.mdl.wtf"
+REPO = "github.com/thatmattlove"
