@@ -11,4 +11,4 @@ import (
 )
 ```
 
-![GitHub License](https://img.shields.io/github/license/thatmattlove/go-pkg-domain)
+![GitHub License](https://img.shields.io/github/license/thatmattlove/go-pkg-domain?style=for-the-badge&color=black)
