@@ -2,6 +2,7 @@ package parsing
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"regexp"
 	"strings"
@@ -34,7 +35,12 @@ func GetPackagePath(req *http.Request, base string) (string, error) {
 }
 
 func MakeRepoPath(repo, pkg string) string {
+	log.Println(repo, pkg)
 	repo = withoutScheme.ReplaceAllString(repo, "")
+	if !strings.HasPrefix(pkg, "/go-") {
+		pkg = strings.ReplaceAll(pkg, "/", "")
+		pkg = "/go-" + pkg
+	}
 	out := strings.Join([]string{repo, pkg}, "/")
 	out = strings.ReplaceAll(out, "//", "/")
 	return fmt.Sprintf("https://%s", out)

@@ -73,16 +73,20 @@ func Test_IsGoGet(t *testing.T) {
 
 func Test_MakeRepoPath(t *testing.T) {
 	t.Run("1", func(t *testing.T) {
-		result := parsing.MakeRepoPath("https://github.com/user", "/repo")
-		testza.AssertEqual(t, "https://github.com/user/repo", result)
+		result := parsing.MakeRepoPath("https://github.com/user", "/go-repo")
+		testza.AssertEqual(t, "https://github.com/user/go-repo", result)
 	})
 	t.Run("2", func(t *testing.T) {
-		result := parsing.MakeRepoPath("http://github.com/user", "/repo")
-		testza.AssertEqual(t, "https://github.com/user/repo", result)
+		result := parsing.MakeRepoPath("http://github.com/user", "/go-repo")
+		testza.AssertEqual(t, "https://github.com/user/go-repo", result)
 	})
 	t.Run("3", func(t *testing.T) {
-		result := parsing.MakeRepoPath("http://github.com/user", "/repo/pkg")
-		testza.AssertEqual(t, "https://github.com/user/repo/pkg", result)
+		result := parsing.MakeRepoPath("http://github.com/user", "/go-repo/pkg")
+		testza.AssertEqual(t, "https://github.com/user/go-repo/pkg", result)
+	})
+	t.Run("4", func(t *testing.T) {
+		result := parsing.MakeRepoPath("http://github.com/user", "/repo")
+		testza.AssertEqual(t, "https://github.com/user/go-repo", result)
 	})
 }
 
